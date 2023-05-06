@@ -23,15 +23,15 @@ In the appsettings.json file located in the project's root directory, set the da
 ```json
 {
 "JwtSettings": {
-"Issuer": "https://localhost:7231/",
-"SigningKey": "sigortamnetcustomerapp.06/05/2023-11:17",
+"Issuer": "issuer",
+"SigningKey": "customerapp.06/05/2023-11:17",
 "Expire": 3
 },
 "ConnectionStrings": {
-"DefaultConnection": "Server=(localdb)\mssqllocaldb;Database=Sigortamnet;Trusted_Connection=True;MultipleActiveResultSets=true"
+"DefaultConnection": "sqlserverconnectionstring"
 },
 "RedisConfiguration": {
-"ConnectionString": "localhost:6379"
+"ConnectionString": "redisconnectionstring"
 }
 }
 ```
