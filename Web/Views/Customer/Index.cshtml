@@ -1,0 +1,56 @@
+﻿@using Web.Models.Customer;
+@model List<CustomerListDto>
+
+<div class="row mb-3">
+    <div class="col-12">
+        <a class="btn btn-primary" href="Customer/Create">New Customer</a>
+    </div>
+</div>
+<div class="input-group mb-3">
+    <input id="input-search" type="text" class="form-control" placeholder="search user" aria-label="search user" aria-describedby="button-addon2">
+    <div class="input-group-append">
+        <button class="btn btn-outline-info" type="submit" id="button-search">Search</button>
+    </div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">TCKN</th>
+            <th scope="col">Birth Date</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@item.Id</th>
+                <td>@item.FirstName</td>
+                <td>@item.LastName</td>
+                <td>@item.TCKN</td>
+                <td>@item.Birthdate</td>
+                <td><a class="btn btn-success" href="Customer/Edit?Id=@item.Id">Edit</a> <a class="btn btn-danger" href="Customer/Delete?Id=@item.Id">Remove</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts{
+    <script>
+
+        $("#button-search").on("click", function () {
+            $.ajax({
+                type: "Post",
+                dataType: 'json',
+                url: "Customer/Search",
+                data: {
+                    SearchKey: $("#input-search").val(),
+                },
+            })
+        });
+
+    </script>
+}

@@ -1,0 +1,41 @@
+﻿@using Web.Models.Customer;
+@model AddCustomerRequestModel
+
+<form action="create" method="post">
+    <div class="form-group">
+        <label asp-for="FirstName">First Name</label>
+        <input asp-for="FirstName" type="text" class="form-control" id="firstName">
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="LastName">Last Name</label>
+        <input asp-for="LastName" type="text" class="form-control" id="lastName">
+        <span asp-validation-for="LastName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="TCKN">TCKN</label>
+        <input asp-for="TCKN" type="text" class="form-control" id="tckn">
+        <span asp-validation-for="TCKN" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Birthdate">Birth Date</label>
+        <input asp-for="Birthdate" type="text" class="form-control" id="birthdate" name="birthdate">
+        <span asp-validation-for="Birthdate" class="text-danger"></span>
+    </div>
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+@section Scripts{
+    <script>
+            $(function () {
+                $('input[name="birthdate"]').daterangepicker({
+                    singleDatePicker: true,
+                    showDropdowns: true,
+                    minYear: 1901,
+                    maxYear: parseInt(moment().format('YYYY'), 10)
+                }, function (start, end, label) {
+                    var years = moment().diff(start, 'years');
+                });
+            });
+    </script>
+}
