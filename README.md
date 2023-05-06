@@ -17,7 +17,7 @@ Redis Server
 Clone or download the project.
 bash
 Copy code
-git clone https://github.com/username/project-name.git
+git clone https://github.com/ozturklut/CustomerApp
 In the appsettings.json file located in the project's root directory, set the database connection string in the ConnectionStrings section and the Redis connection string in the RedisConfiguration section correctly.
 
 ```json
